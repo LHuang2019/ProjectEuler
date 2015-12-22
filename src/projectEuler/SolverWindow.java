@@ -13,6 +13,6 @@ public class SolverWindow {
      */
     public static void main (String[]   arg)
     {
-        System.out.println(LevelOneToTwentyFive.problemOne(3, 5, 1000));
+        System.out.println(LevelOneToTwentyFive.problemTwo(4000000));
     }
 }
