@@ -28,9 +28,9 @@ public class LevelOneToTwentyFive {
         int sumTwo = (nTwo * (nTwo + 1)) / 2 * y;
         int sumThree = (nThree * (nThree + 1)) / 2 * (x * y);
 
-        int outPut = sumOne + sumTwo - sumThree;
+        int output = sumOne + sumTwo - sumThree;
 
-        return outPut;
+        return output;
     }
     
     /**
@@ -47,7 +47,7 @@ public class LevelOneToTwentyFive {
 
         int previousFib = 0;
         int currentFib = 1;
-        int outPut = 0;
+        int output = 0;
 
         while (currentFib < max)
         {       
@@ -57,9 +57,32 @@ public class LevelOneToTwentyFive {
 
             if (currentFib % 2 == 0)
             {
-                outPut = outPut + currentFib;
+                output = output + currentFib;
             }
         }
-        return outPut;
+        return output;
+    }
+    
+    /**
+     * Method which solves problem three using brute force
+     * @param input the number that will be solve
+     * @return the largest prime factor of the input
+     */
+    public static long largestPrimeFactor(long input)
+    {
+        long hold = input;
+        long key = 0;
+        
+        for (long i = 2; i <= hold; i++)
+        {
+            if (hold % i == 0)
+            {
+                key = i;
+                hold = hold / i;
+                i = 2;
+            }
+        }
+        
+        return key;
     }
 }
