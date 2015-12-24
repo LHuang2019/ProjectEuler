@@ -85,4 +85,47 @@ public class LevelOneToTwentyFive {
         
         return key;
     }
+    
+    /**
+     * Method which solves problem 4 using brute force
+     * @param max the largest number that the factor can become
+     * @return output the product that is palindrome
+     */
+    public static int largestPalindromeProduct(int max)
+    {
+        int output = 0;
+        int min = max / 10 + 1;
+        
+        for (int i = max; i > min; i--)
+        {
+            for (int j = i; j > min; j--)
+            {
+                if (palindromeIntChecker(i * j) && i * j > output)
+                {
+                    output = i * j;
+                }
+            }
+        }
+        return output;
+    }
+    
+    /**
+     * helper method which checks to see if a number is palindrome
+     * @param input the number that be checked
+     * @return true if the number is palindrome
+     */
+    private static boolean palindromeIntChecker(int input)
+    {
+        int num = input;
+        int placeHolder = 0;
+        int rev = 0;
+        
+        while (num > 0)
+        {
+            placeHolder = num % 10;
+            rev = rev * 10 + placeHolder;
+            num = num / 10;
+        }    
+        return rev == input;
+    }
 }
