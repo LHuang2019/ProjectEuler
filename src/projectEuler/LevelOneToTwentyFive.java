@@ -1,5 +1,7 @@
 package projectEuler;
 
+import java.util.ArrayList;
+
 /**
  * The class which contains the method that solves problem one through twenty five
  * @author Li Huang
@@ -64,26 +66,17 @@ public class LevelOneToTwentyFive {
     }
     
     /**
-     * Method which solves problem three using brute force
+     * Method which solves problem three using the helper method
+     *      ProjectHelper -> primeFactor()
      * @param input the number that will be solve
      * @return the largest prime factor of the input
      */
     public static long largestPrimeFactor(long input)
     {
-        long hold = input;
-        long key = 0;
+        ArrayList<Long> list = ProjectHelper.primeFactor(input);
+        long output = list.get(list.size() - 1);
         
-        for (long i = 2; i <= hold; i++)
-        {
-            if (hold % i == 0)
-            {
-                key = i;
-                hold = hold / i;
-                i = 2;
-            }
-        }
-        
-        return key;
+        return output;
     }
     
     /**
@@ -100,32 +93,12 @@ public class LevelOneToTwentyFive {
         {
             for (int j = i; j > min; j--)
             {
-                if (palindromeIntChecker(i * j) && i * j > output)
+                if (ProjectHelper.palindromeIntChecker(i * j) && i * j > output)
                 {
                     output = i * j;
                 }
             }
         }
         return output;
-    }
-    
-    /**
-     * helper method which checks to see if a number is palindrome
-     * @param input the number that be checked
-     * @return true if the number is palindrome
-     */
-    private static boolean palindromeIntChecker(int input)
-    {
-        int num = input;
-        int placeHolder = 0;
-        int rev = 0;
-        
-        while (num > 0)
-        {
-            placeHolder = num % 10;
-            rev = rev * 10 + placeHolder;
-            num = num / 10;
-        }    
-        return rev == input;
     }
 }
