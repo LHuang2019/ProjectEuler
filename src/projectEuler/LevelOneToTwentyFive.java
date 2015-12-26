@@ -101,4 +101,21 @@ public class LevelOneToTwentyFive {
         }
         return output;
     }
+    
+    /**
+     * Method which solves problem 6
+     *      sum_n = (n*(n+1))/2
+     *      sum_n^2 = (n*(n+1)*(2n+1))/6
+     * @param max the n value
+     * @return the difference of sum of square and square of sum
+     */
+    public static double sumSquareDifference(double max)
+    {
+        double sumOfSquare = (max * (max + 1) * (2 * max + 1)) / 6;
+        double squareOfSum = Math.pow((max * (max + 1)) / 2, 2);
+        
+        double output = squareOfSum - sumOfSquare;
+        
+        return output;
+    }
 }

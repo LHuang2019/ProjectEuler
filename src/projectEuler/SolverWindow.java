@@ -13,6 +13,6 @@ public class SolverWindow {
      */
     public static void main (String[]   arg)
     {
-        System.out.println(LevelOneToTwentyFive.largestPrimeFactor(600851475143L));
+        System.out.println(LevelOneToTwentyFive.sumSquareDifference(100));
     }
 }
