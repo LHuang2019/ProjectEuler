@@ -118,4 +118,29 @@ public class LevelOneToTwentyFive {
         
         return output;
     }
+    
+    /**
+     * Method which solves problem 7 using helper method
+     *      ProjectHelper -> sieveOfErathosthenes
+     * @param max the nth term prime number
+     * @return index - 1 the value of nth term prime number
+     */
+    public static int problemSeven(int max)
+    {
+        boolean[] list = ProjectHelper.sieveOfErathosthenes(109999);
+        
+        int count = 0;
+        int index = 2;
+        
+        while (count < max && index < list.length - 1)
+        {
+            if (list[index] == false)
+            {
+                count++;
+            }
+            index++;
+        }
+        
+        return index - 1;
+    }
 }

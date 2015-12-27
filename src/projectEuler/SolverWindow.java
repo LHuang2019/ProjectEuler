@@ -13,6 +13,6 @@ public class SolverWindow {
      */
     public static void main (String[]   arg)
     {
-        System.out.println(LevelOneToTwentyFive.sumSquareDifference(100));
+        System.out.println(LevelOneToTwentyFive.problemSeven(10001));
     }
 }

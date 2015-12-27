@@ -56,5 +56,29 @@ public class ProjectHelper {
         
         return factor;
     }
+    
+    /**
+     * Helper method which given a number, gives you all the prime numbers
+     *      under that number, using the algorithm of sieve half efficiently
+     * @param max the max value
+     * @return list an array which gives you prime numbers wich boolean false
+     */
+    public static boolean[] sieveOfErathosthenes(int max)
+    {
+        boolean[] list = new boolean[max + 1];
+        
+        for (int i = 2; i * i < max + 1; i++)
+        {
+            for (int j = i * i; j < max + 1; j++)
+            {
+                if (j % i == 0)
+                {
+                    list[j] = true;
+                }
+            }
+        }
+        
+        return list;
+    }
 
 }
