@@ -143,4 +143,48 @@ public class LevelOneToTwentyFive {
         
         return index - 1;
     }
+    
+    /**
+     * Method which solves problem 8 using two loops that goes through the series
+     * @param series the series given by the problem
+     * @param num the number of consecutive numbers that will be multiply together
+     * @return the largest product of the consecutive numbers
+     */
+    public static long largestProductInSeries(String series, int num)
+    {
+        
+        int[] list = new int[series.length()];
+        
+        for (int i = 0; i < series.length(); i++)
+        {
+            list[i] = Integer.parseInt(series.substring(i, i + 1));
+        }
+        
+        long checker = 1;
+        long output = 0;
+        
+        for (int i = 0; i + num < list.length; i++)
+        {
+            for (int j = i; j < i + num; j++)
+            {
+                if (list[j] != 0)
+                {
+                    checker = checker * list[j];
+                }
+                else
+                {
+                    j = i + num;
+                }
+            }
+            
+            if (checker > output)
+            {
+                output = checker;
+            }
+            checker = 1;
+        }
+        
+        return output;
+    }
+
 }
