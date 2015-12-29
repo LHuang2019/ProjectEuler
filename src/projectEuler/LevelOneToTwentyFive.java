@@ -34,7 +34,7 @@ public class LevelOneToTwentyFive {
 
         return output;
     }
-    
+
     /**
      * Method which solves problem two using brute force, uses Fibbonacci iteration
      * @param max the highest fibbonacci that can be
@@ -64,7 +64,7 @@ public class LevelOneToTwentyFive {
         }
         return output;
     }
-    
+
     /**
      * Method which solves problem three using the helper method
      *      ProjectHelper -> primeFactor()
@@ -75,10 +75,10 @@ public class LevelOneToTwentyFive {
     {
         ArrayList<Long> list = ProjectHelper.primeFactor(input);
         long output = list.get(list.size() - 1);
-        
+
         return output;
     }
-    
+
     /**
      * Method which solves problem 4 using brute force
      * @param max the largest number that the factor can become
@@ -88,7 +88,7 @@ public class LevelOneToTwentyFive {
     {
         int output = 0;
         int min = max / 10 + 1;
-        
+
         for (int i = max; i > min; i--)
         {
             for (int j = i; j > min; j--)
@@ -101,7 +101,7 @@ public class LevelOneToTwentyFive {
         }
         return output;
     }
-    
+
     /**
      * Method which solves problem 6
      *      sum_n = (n*(n+1))/2
@@ -113,12 +113,12 @@ public class LevelOneToTwentyFive {
     {
         double sumOfSquare = (max * (max + 1) * (2 * max + 1)) / 6;
         double squareOfSum = Math.pow((max * (max + 1)) / 2, 2);
-        
+
         double output = squareOfSum - sumOfSquare;
-        
+
         return output;
     }
-    
+
     /**
      * Method which solves problem 7 using helper method
      *      ProjectHelper -> sieveOfErathosthenes
@@ -128,10 +128,10 @@ public class LevelOneToTwentyFive {
     public static int problemSeven(int max)
     {
         boolean[] list = ProjectHelper.sieveOfErathosthenes(109999);
-        
+
         int count = 0;
         int index = 2;
-        
+
         while (count < max && index < list.length - 1)
         {
             if (list[index] == false)
@@ -140,10 +140,10 @@ public class LevelOneToTwentyFive {
             }
             index++;
         }
-        
+
         return index - 1;
     }
-    
+
     /**
      * Method which solves problem 8 using two loops that goes through the series
      * @param series the series given by the problem
@@ -152,17 +152,17 @@ public class LevelOneToTwentyFive {
      */
     public static long largestProductInSeries(String series, int num)
     {
-        
+
         int[] list = new int[series.length()];
-        
+
         for (int i = 0; i < series.length(); i++)
         {
             list[i] = Integer.parseInt(series.substring(i, i + 1));
         }
-        
+
         long checker = 1;
         long output = 0;
-        
+
         for (int i = 0; i + num < list.length; i++)
         {
             for (int j = i; j < i + num; j++)
@@ -176,15 +176,41 @@ public class LevelOneToTwentyFive {
                     j = i + num;
                 }
             }
-            
+
             if (checker > output)
             {
                 output = checker;
             }
             checker = 1;
         }
-        
+
         return output;
     }
 
+    /**
+     * Method which solves problem 9 using Euclid's formula:
+     *      a^2 + b^2 = c^2 where
+     *      a = m^2-n^2, b = 2mn, and c = m^2+n^2
+     * @param sum sum of a + b + c
+     * @return product of a * b * c;
+     */
+    public static int SpecialPythagoreanTriplet(int sum)
+    {
+        int answer = 0;
+        for (int m = 1; m < Math.sqrt(sum); m++)
+        {
+            for (int n = 1; n < m; n++)
+            {
+                if ((m - n) % 2 == 1)
+                {
+                    answer = 2 * (m * m) + 2 * m * n;
+                    if (answer == sum)
+                    {
+                        return 2 * m * n * (m * m - n * n) * (m * m + n * n);
+                    }
+                }
+            }
+        }
+        return 0;
+    }
 }
