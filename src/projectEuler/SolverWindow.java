@@ -13,6 +13,6 @@ public class SolverWindow {
      */
     public static void main (String[]   arg)
     {
-        System.out.println(LevelOneToTwentyFive.SpecialPythagoreanTriplet(1000));
+        System.out.println(LevelOneToTwentyFive.summationOfPrimes(2000000));
     }
 }

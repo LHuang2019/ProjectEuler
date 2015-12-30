@@ -213,4 +213,25 @@ public class LevelOneToTwentyFive {
         }
         return 0;
     }
+    
+    /**
+     * Method which solves problem 10 using helper method sieveOfErathosthenes
+     * @param max the maxmum number that can be
+     * @return the sum of all prime numbers below max
+     */
+    public static long summationOfPrimes(int max)
+    {
+        boolean[] list = ProjectHelper.sieveOfErathosthenes(max);
+        long sum = 0;
+        
+        for (int i = 2; i < list.length; i++)
+        {
+            if (!list[i])
+            {
+                sum += i;
+            }
+        }
+        
+        return sum;
+    }
 }
