@@ -234,4 +234,59 @@ public class LevelOneToTwentyFive {
         
         return sum;
     }
+    
+    /**
+     * Method which solves problem 11 using helper method largestOfThree
+     * @param input the 2d array
+     * @return the largest product of four adjacent numbers inside array
+     */
+    public static int largestProductInGrid (int[][] input)
+    {
+        int checkerRight = 0;
+        int checkerDown = 0;
+        int checkerDiagonal = 0;
+        int checker = 0;
+        int largest = 0;
+        
+        for (int i = 0; i < input.length - 3; i++)
+        {
+            for (int j = 0; j < input[i].length - 3; j++)
+            {
+                checkerRight = input[i][j] * input[i][j + 1] * input[i][j + 2] * input[i][j + 3];
+                checkerDown = input[i][j] * input[i + 1][j] * input[i + 2][j] * input[i + 3][j];
+                checkerDiagonal = input[i][j] * input[i + 1][j + 1] * input[i + 2][j + 2] * input[i + 3][j + 3];
+                checker = ProjectHelper.largestOfThree(checkerRight, checkerDown, checkerDiagonal);
+                if (checker > largest)
+                {
+                    largest = checker;
+                }
+            }
+        }
+        
+        for (int k = input.length - 3; k < input.length; k++)
+        {
+            for (int l = 0; l < input[k].length - 3; l++)
+            {
+                checker = input[k][l] * input[k][l + 1] * input[k][l + 2] * input[k][l + 3];
+                if (checker > largest)
+                {
+                    largest = checker;
+                }
+            }
+        }
+        
+        for (int m = 0; m < input.length - 3; m++)
+        {
+            for (int n = 3; n < input[m].length; n++)
+            {
+                checkerDiagonal = input[m][n] * input[m + 1][n - 1] * input[m + 2][n - 2] * input[m + 3][n - 3];
+                if (checkerDiagonal > largest)
+                {
+                    largest = checkerDiagonal;
+                }
+            }
+        }
+        
+        return largest;
+    }
 }

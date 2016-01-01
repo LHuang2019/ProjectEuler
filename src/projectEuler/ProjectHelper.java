@@ -27,7 +27,7 @@ public class ProjectHelper {
         }    
         return rev == input;
     }
-    
+
     /**
      * Helper method which identifies all prime factors of the input
      * @param input the input
@@ -35,11 +35,11 @@ public class ProjectHelper {
      */
     public static ArrayList<Long> primeFactor(long input)
     {
-        
+
         ArrayList<Long> factor = new ArrayList<Long>();
         long checker = input;
-        
-        
+
+
         for (long i = 2; i <= checker / i; i++)
         {
             if (checker % i == 0)
@@ -48,15 +48,15 @@ public class ProjectHelper {
                 checker = checker / i;
             }
         }
-        
+
         if (checker > 1)
         {
             factor.add(checker);
         }
-        
+
         return factor;
     }
-    
+
     /**
      * Helper method which given a number, gives you all the prime numbers
      *      under that number, using the algorithm of sieve half efficiently
@@ -66,7 +66,7 @@ public class ProjectHelper {
     public static boolean[] sieveOfErathosthenes(int max)
     {
         boolean[] list = new boolean[max + 1];
-        
+
         for (int i = 2; i * i < max + 1; i++)
         {
             for (int j = i * i; j < max + 1; j++)
@@ -77,10 +77,10 @@ public class ProjectHelper {
                 }
             }
         }
-        
+
         return list;
     }
-    
+
     /**
      * Method which returns the gcd of x and y
      * @param x the x value
@@ -97,5 +97,24 @@ public class ProjectHelper {
             x = i;
         }
         return x;
+    }
+
+    /**
+     * Method which returns the largest of number of x, y, and z
+     * @param x the first number
+     * @param y the second number
+     * @param z the third number
+     * @return the largest number
+     */
+    public static int largestOfThree(int x, int y, int z)
+    {
+        if ( x > y && x > z )
+            return x;
+        else if ( y > x && y > z )
+            return y;
+        else if ( z > x && z > y )
+            return z;
+        else   
+            return x;
     }
 }
