@@ -1,5 +1,6 @@
 package projectEuler;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 /**
@@ -213,7 +214,7 @@ public class LevelOneToTwentyFive {
         }
         return 0;
     }
-    
+
     /**
      * Method which solves problem 10 using helper method sieveOfErathosthenes
      * @param max the maxmum number that can be
@@ -223,7 +224,7 @@ public class LevelOneToTwentyFive {
     {
         boolean[] list = ProjectHelper.sieveOfErathosthenes(max);
         long sum = 0;
-        
+
         for (int i = 2; i < list.length; i++)
         {
             if (!list[i])
@@ -231,10 +232,10 @@ public class LevelOneToTwentyFive {
                 sum += i;
             }
         }
-        
+
         return sum;
     }
-    
+
     /**
      * Method which solves problem 11 using helper method largestOfThree
      * @param input the 2d array
@@ -247,7 +248,7 @@ public class LevelOneToTwentyFive {
         int checkerDiagonal = 0;
         int checker = 0;
         int largest = 0;
-        
+
         for (int i = 0; i < input.length - 3; i++)
         {
             for (int j = 0; j < input[i].length - 3; j++)
@@ -262,7 +263,7 @@ public class LevelOneToTwentyFive {
                 }
             }
         }
-        
+
         for (int k = input.length - 3; k < input.length; k++)
         {
             for (int l = 0; l < input[k].length - 3; l++)
@@ -274,7 +275,7 @@ public class LevelOneToTwentyFive {
                 }
             }
         }
-        
+
         for (int m = 0; m < input.length - 3; m++)
         {
             for (int n = 3; n < input[m].length; n++)
@@ -286,7 +287,29 @@ public class LevelOneToTwentyFive {
                 }
             }
         }
-        
+
         return largest;
+    }
+
+    /**
+     * Method which solves problem 13 using bigInteger
+     * @param series the series of string in array list
+     * @param digit the digit of the sum the question wants to show, which is 10
+     * @return the first 10 digit of the sum of the series
+     */
+    public static String largestSumInSeries(ArrayList<String> series, int digit)
+    {
+
+        BigInteger sum = new BigInteger("0");
+
+        for (int i = 0; i < series.size(); i++)
+        {
+            sum = sum.add(new BigInteger(series.get(i)));
+        }
+        
+        String sumString = sum.toString();
+        String output = sumString.substring(0, digit);
+        
+        return output;
     }
 }

@@ -2,7 +2,6 @@ package projectEuler;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -55,8 +54,27 @@ public class SolverWindow {
         
         return array2D;
     }
-
     
+    /**
+     * Method which reads in the file and convert it into a arraylist of string
+     * @param fileName the file that will be reading in
+     * @return the arraylist of string
+     * @throws FileNotFoundException exception in which the file is not at the location
+     */
+    @SuppressWarnings("resource")
+    public static ArrayList<String> stringArrayReader(String fileName) throws FileNotFoundException
+    {
+        Scanner scan = new Scanner(new File(fileName));
+        ArrayList<String> output = new ArrayList<String>();
+        
+        while (scan.hasNextLine())
+        {
+            output.add(scan.nextLine());
+        }
+        
+        return output;  
+    }
+
     /**
      * The main method that gives the answer by calling other methods
      * @param arg the input argument
@@ -64,6 +82,6 @@ public class SolverWindow {
      */
     public static void main (String[]   arg) throws FileNotFoundException
     {
-        System.out.println(LevelOneToTwentyFive.largestProductInGrid(gridReader("problem11.txt")));
+        System.out.println(LevelOneToTwentyFive.largestSumInSeries(stringArrayReader("problem13.txt"), 10));
     }
 }
