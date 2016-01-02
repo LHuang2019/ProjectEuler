@@ -82,6 +82,6 @@ public class SolverWindow {
      */
     public static void main (String[]   arg) throws FileNotFoundException
     {
-        System.out.println(LevelOneToTwentyFive.largestSumInSeries(stringArrayReader("problem13.txt"), 10));
+        System.out.println(LevelOneToTwentyFive.highlyDivisibleTriNum(6));
     }
 }

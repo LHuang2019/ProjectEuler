@@ -217,7 +217,7 @@ public class LevelOneToTwentyFive {
 
     /**
      * Method which solves problem 10 using helper method sieveOfErathosthenes
-     * @param max the maxmum number that can be
+     * @param max the maximum number that can be
      * @return the sum of all prime numbers below max
      */
     public static long summationOfPrimes(int max)
@@ -290,7 +290,39 @@ public class LevelOneToTwentyFive {
 
         return largest;
     }
-
+    
+    /**
+     * Method which solves problem 12 using summation and for loop up to square root
+     *      of the sum, and increment by two since factors come in pairs if divisible 
+     * @param divisorNum the amount of divisors
+     * @return the triangular number that contains the divisorNum amount of divisors
+     */
+    public static int highlyDivisibleTriNum(int divisorNum)
+    {
+        int count = 2;
+        int n = 1;
+        int current = 0;
+        
+        while (true)
+        {
+            current = (n * (n + 1)) / 2;
+            for (int i = 2; i < Math.sqrt(current); i++)
+            {
+                if (current % i == 0)
+                {
+                    count += 2;
+                }
+                
+                if (count >= divisorNum)
+                {
+                    return current;
+                }
+            }
+            n++;
+            count = 2;
+        }
+    }
+    
     /**
      * Method which solves problem 13 using bigInteger
      * @param series the series of string in array list
