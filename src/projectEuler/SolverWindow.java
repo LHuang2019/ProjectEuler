@@ -82,6 +82,6 @@ public class SolverWindow {
      */
     public static void main (String[]   arg) throws FileNotFoundException
     {
-        System.out.println(LevelOneToTwentyFive.highlyDivisibleTriNum(6));
+        System.out.println(LevelOneToTwentyFive.longestCollatzSequence(1000000));
     }
 }

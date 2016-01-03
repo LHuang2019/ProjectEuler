@@ -344,4 +344,42 @@ public class LevelOneToTwentyFive {
         
         return output;
     }
+    
+    /**
+     * Method which solves problem 14 using loops
+     * @param max the maximum number, which is million for the problem
+     * @return the number that is under max and produces the longest chain
+     */
+    public static int longestCollatzSequence(int max)
+    {
+        long n = 0;
+        int count = 0;
+        int maxCount = 0;
+        int maxNum = 0;
+        
+        for (int i = 1; i < max; i++)
+        {
+            count = 0;
+            n = i;
+            while (n > 1)
+            {
+                if (n % 2 == 0)
+                {
+                    n /= 2;
+                    count++;
+                }
+                else
+                {
+                    n = 3 * n + 1;
+                    count++;
+                }
+            }
+            if (count > maxCount)
+            {
+                maxCount = count;
+                maxNum = i;
+            }
+        }
+        return maxNum;
+    }
 }
