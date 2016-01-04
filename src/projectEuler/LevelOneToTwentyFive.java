@@ -382,4 +382,24 @@ public class LevelOneToTwentyFive {
         }
         return maxNum;
     }
+    
+    /**
+     * Method which solves problem 16 using BigInteger
+     * @param exponent the exponent
+     * @return the sum of the digit of the num
+     */
+    public static int powerDigitSum(int exponent)
+    {
+        BigInteger num = new BigInteger("2");
+        num = num.pow(exponent);
+        String sum = num.toString();
+        int output = 0;
+        
+        for (int i = 0; i < sum.length(); i++)
+        {
+            output += Integer.parseInt(sum.substring(i, i + 1));
+        }
+        
+        return output;
+    }
 }

@@ -82,6 +82,6 @@ public class SolverWindow {
      */
     public static void main (String[]   arg) throws FileNotFoundException
     {
-        System.out.println(LevelOneToTwentyFive.longestCollatzSequence(1000000));
+        System.out.println(LevelOneToTwentyFive.powerDigitSum(1000));
     }
 }
