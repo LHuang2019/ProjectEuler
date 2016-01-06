@@ -290,7 +290,7 @@ public class LevelOneToTwentyFive {
 
         return largest;
     }
-    
+
     /**
      * Method which solves problem 12 using summation and for loop up to square root
      *      of the sum, and increment by two since factors come in pairs if divisible 
@@ -302,7 +302,7 @@ public class LevelOneToTwentyFive {
         int count = 2;
         int n = 1;
         int current = 0;
-        
+
         while (true)
         {
             current = (n * (n + 1)) / 2;
@@ -312,7 +312,7 @@ public class LevelOneToTwentyFive {
                 {
                     count += 2;
                 }
-                
+
                 if (count >= divisorNum)
                 {
                     return current;
@@ -322,7 +322,7 @@ public class LevelOneToTwentyFive {
             count = 2;
         }
     }
-    
+
     /**
      * Method which solves problem 13 using bigInteger
      * @param series the series of string in array list
@@ -338,13 +338,13 @@ public class LevelOneToTwentyFive {
         {
             sum = sum.add(new BigInteger(series.get(i)));
         }
-        
+
         String sumString = sum.toString();
         String output = sumString.substring(0, digit);
-        
+
         return output;
     }
-    
+
     /**
      * Method which solves problem 14 using loops
      * @param max the maximum number, which is million for the problem
@@ -356,7 +356,7 @@ public class LevelOneToTwentyFive {
         int count = 0;
         int maxCount = 0;
         int maxNum = 0;
-        
+
         for (int i = 1; i < max; i++)
         {
             count = 0;
@@ -382,7 +382,7 @@ public class LevelOneToTwentyFive {
         }
         return maxNum;
     }
-    
+
     /**
      * Method which solves problem 16 using BigInteger
      * @param exponent the exponent
@@ -394,12 +394,77 @@ public class LevelOneToTwentyFive {
         num = num.pow(exponent);
         String sum = num.toString();
         int output = 0;
-        
+
         for (int i = 0; i < sum.length(); i++)
         {
             output += Integer.parseInt(sum.substring(i, i + 1));
         }
-        
+
         return output;
+    }
+
+    /**
+     * Method which solves problem 17 using loops and control statements
+     * @param max the max number, must be less than or equal to zero
+     * @return the sum of number of letters from one to max
+     */
+    public static int numberLetterCounts (int max)
+    {
+        String[]ones = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
+
+        String[]tens = {"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy",
+                "Eighty", "Ninety"};
+
+        String[]special = {"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen",
+                "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+
+        String num = "";
+        int sum = 0;
+
+        for (int i = 1; i <= max; i++)
+        {
+            if (i > 999)
+            {
+                num = "oneThousand";
+            }
+            else if (i % 100 == 0)
+            {
+                num = ones[i / 100] + "hundred";
+            }
+            else if (i > 99)
+            {
+                if ((i % 100) < 10)
+                {
+                    num = ones[i / 100] + "HundredAnd" + ones[i % 100];
+                }
+                else if ((i % 100) < 20)
+                {
+                    num = ones[i / 100] + "HundredAnd" + special[i % 10];
+                }
+                else
+                {
+                    num = ones[i / 100] + "HundredAnd" + tens[(i % 100) / 10] + ones[i % 10];
+                }
+            }
+            else
+            {
+                if (i < 10)
+                {
+                    num = ones[i];
+                }
+                else if (i < 20)
+                {
+                    num = special[i % 10];
+                }
+                else
+                {
+                    num = tens[i / 10] + ones[i % 10];
+                }
+            }
+
+            sum += num.length();
+        }
+
+        return sum;
     }
 }
