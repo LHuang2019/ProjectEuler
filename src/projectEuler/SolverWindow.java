@@ -2,6 +2,7 @@ package projectEuler;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -26,6 +27,9 @@ public class SolverWindow {
         Scanner scan = new Scanner(new File(fileName));
         int index = -1;
         String line = "";
+
+        int rowLength = 0;
+        int maxLength = 0;
         
         while (scan.hasNextLine())
         {
@@ -35,10 +39,17 @@ public class SolverWindow {
             for (String s : line.split(" "))
             {
                 list2D.get(index).add(Integer.parseInt(s));
+                rowLength++;
             }
+            if (maxLength < rowLength)
+            {
+                maxLength = rowLength;
+            }
+            
+            rowLength = 0;
         }
         
-        int[][] array2D = new int[list2D.size()][list2D.get(0).size()];
+        int[][] array2D = new int[list2D.size()][maxLength];
         
         for (int i = 0; i < list2D.size(); i++)
         {
@@ -56,9 +67,9 @@ public class SolverWindow {
     }
     
     /**
-     * Method which reads in the file and convert it into a arraylist of string
+     * Method which reads in the file and convert it into a array list of string
      * @param fileName the file that will be reading in
-     * @return the arraylist of string
+     * @return the array list of string
      * @throws FileNotFoundException exception in which the file is not at the location
      */
     @SuppressWarnings("resource")
@@ -82,6 +93,8 @@ public class SolverWindow {
      */
     public static void main (String[]   arg) throws FileNotFoundException
     {
-        System.out.println(LevelOneToTwentyFive.numberLetterCounts(1000));
+        System.out.println(LevelOneToTwentyFive.maxPathSum(gridReader("problem67.txt")));
+
+        //System.out.println(Arrays.deepToString(array));
     }
 }

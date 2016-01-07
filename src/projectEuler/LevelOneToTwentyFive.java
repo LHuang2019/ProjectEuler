@@ -467,4 +467,34 @@ public class LevelOneToTwentyFive {
 
         return sum;
     }
+
+
+    /**
+     * Method which solves problem 18 and 67 by dividing the triangles into smaller ones
+     *      and solve it more efficiently 
+     * @param array the triangle that is saved as 2d array
+     * @return array[0][0] which should be the sum of largest path
+     */
+    public static int maxPathSum(int[][] array)
+    {
+        int arrayHeight = array.length - 1;
+        int arrayWidth = array[arrayHeight].length - 1;
+
+        for (int i = arrayHeight; i > 0; i--)
+        {
+            for (int j = arrayWidth; j > 0; j--)
+            {
+                if (array[i][j] > array[i][j - 1])
+                {
+                    array[i - 1][j - 1] += array[i][j];
+                }
+                else
+                {
+                    array[i - 1][j - 1] += array[i][j - 1];
+                }
+            }
+        }
+
+        return array[0][0];
+    }
 }
