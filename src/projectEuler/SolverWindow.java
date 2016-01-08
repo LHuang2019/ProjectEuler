@@ -94,7 +94,7 @@ public class SolverWindow {
     public static void main (String[]   arg) throws FileNotFoundException
     {
 
-        System.out.println(LevelOneToTwentyFive.countingSundays(1901, 2000));
+        System.out.println(LevelOneToTwentyFive.factorialDigitSum(100));
         //System.out.println(Arrays.deepToString(array));
     }
 }

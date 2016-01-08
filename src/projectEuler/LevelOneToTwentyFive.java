@@ -545,4 +545,30 @@ public class LevelOneToTwentyFive {
         
         return sum;
     }
+    
+    /**
+     * Method which solves problem 20 using BigInteger and loops
+     * @param n the number that will do the factorial
+     * @return the sum of digit of n!
+     */
+    public static int factorialDigitSum (int n)
+    {
+        
+        BigInteger sum = BigInteger.valueOf(n);
+        int output = 0;
+        
+        for (int i = n - 1; i > 1; i--)
+        {
+            sum = sum.multiply(BigInteger.valueOf(i));
+        }
+        
+        String result = sum.toString();
+        
+        for (int j = 0; j < result.length(); j++)
+        {
+            output += Integer.valueOf(result.substring(j, j + 1));
+        }
+        
+        return output;
+    }
 }
