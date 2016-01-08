@@ -497,4 +497,52 @@ public class LevelOneToTwentyFive {
 
         return array[0][0];
     }
+    
+    /**
+     * Method which solves problem 19 using helper method and for loops
+     * @param begin the starting year
+     * @param end the ending year
+     * @return sum of all Mondays that happens in the first month between the begin and the end year.
+     */
+    public static int countingSundays(int begin, int end)
+    {
+        int weekDay = 0;
+        int sum = 0;
+        
+        for (int i = begin; i <= end; i++)
+        {
+            weekDay = ProjectHelper.startDayFinder(i);
+
+            for (int month = 0; month < 12; month++)
+            {
+                if (weekDay == 6)
+                {
+                    sum++;
+                }
+                
+                if (month == 1)
+                {
+                    if (i % 4 == 0)
+                    {
+                        weekDay = (weekDay + 29) % 7;
+                    }
+                    else
+                    {
+                        weekDay = (weekDay + 28) % 7;
+                    }
+                }
+                
+                else if (month == 3 || month == 5 || month == 8 || month == 10)
+                {
+                    weekDay = (weekDay + 30) % 7;
+                }
+                else
+                {
+                    weekDay = (weekDay + 31) % 7;
+                }
+            }
+        }
+        
+        return sum;
+    }
 }

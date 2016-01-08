@@ -117,4 +117,33 @@ public class ProjectHelper {
         else   
             return x;
     }
+    
+    /**
+     * Method which finds the name of the weekday of January 1st
+     *      for any year after 1900
+     * @param year the weekday of the year you want to find
+     * @return the startDay where 0 is Monday and 6 is Sunday
+     */
+    public static int startDayFinder (int year)
+    {
+        int difference = year - 1900;
+        int startDay = ((difference / 4) + difference) % 7;
+        
+        if (difference > 99)
+        {
+            startDay -= difference / 100;
+        }
+        
+        if (year % 100 != 0 && year % 4 == 0)
+        {
+            startDay -= 1;
+            
+            if (startDay < 0)
+            {
+                startDay += 7;
+            }
+        }
+        
+        return startDay;
+    }
 }

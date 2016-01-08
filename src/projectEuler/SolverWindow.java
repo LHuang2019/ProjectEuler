@@ -23,14 +23,14 @@ public class SolverWindow {
             throws FileNotFoundException
     {
         ArrayList<ArrayList<Integer>> list2D = new ArrayList<ArrayList<Integer>>();
-        
+
         Scanner scan = new Scanner(new File(fileName));
         int index = -1;
         String line = "";
 
         int rowLength = 0;
         int maxLength = 0;
-        
+
         while (scan.hasNextLine())
         {
             index++;
@@ -45,12 +45,12 @@ public class SolverWindow {
             {
                 maxLength = rowLength;
             }
-            
+
             rowLength = 0;
         }
-        
+
         int[][] array2D = new int[list2D.size()][maxLength];
-        
+
         for (int i = 0; i < list2D.size(); i++)
         {
             ArrayList<Integer> row = list2D.get(i);
@@ -62,10 +62,10 @@ public class SolverWindow {
                 }
             }
         }
-        
+
         return array2D;
     }
-    
+
     /**
      * Method which reads in the file and convert it into a array list of string
      * @param fileName the file that will be reading in
@@ -77,12 +77,12 @@ public class SolverWindow {
     {
         Scanner scan = new Scanner(new File(fileName));
         ArrayList<String> output = new ArrayList<String>();
-        
+
         while (scan.hasNextLine())
         {
             output.add(scan.nextLine());
         }
-        
+
         return output;  
     }
 
@@ -93,8 +93,8 @@ public class SolverWindow {
      */
     public static void main (String[]   arg) throws FileNotFoundException
     {
-        System.out.println(LevelOneToTwentyFive.maxPathSum(gridReader("problem67.txt")));
 
+        System.out.println(LevelOneToTwentyFive.countingSundays(1901, 2000));
         //System.out.println(Arrays.deepToString(array));
     }
 }
