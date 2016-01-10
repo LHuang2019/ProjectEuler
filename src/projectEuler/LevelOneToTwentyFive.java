@@ -497,7 +497,7 @@ public class LevelOneToTwentyFive {
 
         return array[0][0];
     }
-    
+
     /**
      * Method which solves problem 19 using helper method and for loops
      * @param begin the starting year
@@ -508,7 +508,7 @@ public class LevelOneToTwentyFive {
     {
         int weekDay = 0;
         int sum = 0;
-        
+
         for (int i = begin; i <= end; i++)
         {
             weekDay = ProjectHelper.startDayFinder(i);
@@ -519,7 +519,7 @@ public class LevelOneToTwentyFive {
                 {
                     sum++;
                 }
-                
+
                 if (month == 1)
                 {
                     if (i % 4 == 0)
@@ -531,7 +531,7 @@ public class LevelOneToTwentyFive {
                         weekDay = (weekDay + 28) % 7;
                     }
                 }
-                
+
                 else if (month == 3 || month == 5 || month == 8 || month == 10)
                 {
                     weekDay = (weekDay + 30) % 7;
@@ -542,10 +542,10 @@ public class LevelOneToTwentyFive {
                 }
             }
         }
-        
+
         return sum;
     }
-    
+
     /**
      * Method which solves problem 20 using BigInteger and loops
      * @param n the number that will do the factorial
@@ -553,22 +553,63 @@ public class LevelOneToTwentyFive {
      */
     public static int factorialDigitSum (int n)
     {
-        
+
         BigInteger sum = BigInteger.valueOf(n);
         int output = 0;
-        
+
         for (int i = n - 1; i > 1; i--)
         {
             sum = sum.multiply(BigInteger.valueOf(i));
         }
-        
+
         String result = sum.toString();
-        
+
         for (int j = 0; j < result.length(); j++)
         {
             output += Integer.valueOf(result.substring(j, j + 1));
         }
-        
+
         return output;
+    }
+
+    /**
+     * Method which solves problem 21 using loops and factorFinder()
+     * @param max the max
+     * @return the sum of all amicable numbers below max
+     */
+    public static int amicableNumbers(int max)
+    {
+        ArrayList<Integer> current = new ArrayList<Integer>();
+        int sum = 0;
+        int amicable = 0;
+        int amicableReverse = 0;
+        boolean[] array = new boolean[max];
+
+        for (int i = 1; i < array.length; i++)
+        {
+            if (!array[i]){
+                current = ProjectHelper.factorFinder(i);
+                for (int j = 0; j < current.size(); j++)
+                {
+                    amicable += current.get(j);
+                }
+
+                current = ProjectHelper.factorFinder(amicable);
+                for (int k = 0; k < current.size(); k++)
+                {
+                    amicableReverse += current.get(k);
+                }
+
+                if (i != amicable && i == amicableReverse && amicable < max)
+                {
+                    sum = sum + i + amicable;
+                    array[amicable] = true;
+                }
+                amicable = 0;
+                amicableReverse = 0;
+            }
+        }
+
+        return sum;
     }
 }

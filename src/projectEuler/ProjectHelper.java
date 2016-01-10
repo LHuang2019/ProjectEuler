@@ -146,4 +146,30 @@ public class ProjectHelper {
         
         return startDay;
     }
+    
+    /**
+     * Method which returns all the factors of the number except itself
+     *      in an ArrayList
+     * @param num the number
+     * @return an ArrayList of all the factors of the number except itself
+     */
+    public static ArrayList<Integer> factorFinder(int num)
+    {
+        
+        long sqrtNum = Math.round(Math.sqrt(num)) + 1;
+        
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(1);
+        
+        for (int i = 2; i <= sqrtNum; i++)
+        {
+            if (num % i == 0)
+            {
+                list.add(i);
+                list.add(num/i);
+            }
+        }
+        
+        return list;
+    }
 }
