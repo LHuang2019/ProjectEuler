@@ -78,9 +78,15 @@ public class SolverWindow {
         Scanner scan = new Scanner(new File(fileName));
         ArrayList<String> output = new ArrayList<String>();
 
+        String current = "";
+        
         while (scan.hasNextLine())
         {
-            output.add(scan.nextLine());
+            current = scan.nextLine();
+            for (String s : current.split(","))
+            {
+                output.add(s);
+            }
         }
 
         return output;  
@@ -94,8 +100,8 @@ public class SolverWindow {
     public static void main (String[]   arg) throws FileNotFoundException
     {
 
-        System.out.println(LevelOneToTwentyFive.amicableNumbers(10000));
+        System.out.println(LevelOneToTwentyFive.nameScores(stringArrayReader("problem22.txt")));
         //System.out.println(Arrays.deepToString(array));
-        
+
     }
 }

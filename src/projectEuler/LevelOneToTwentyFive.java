@@ -612,4 +612,49 @@ public class LevelOneToTwentyFive {
 
         return sum;
     }
+
+    /**
+     * Method which solves problem 22 using loops and insertion sort
+     * @param list the list of strings
+     * @return the sum of string scores
+     */
+    public static int nameScores(ArrayList<String> list)
+    {
+        String current = "";
+        int score = 0;
+        int sum = 0;
+
+        for (int j = 0; j < list.size(); j++)
+        {
+            current = list.get(j);
+            int previous = j - 1;
+
+            while ((previous >- 1) && (list.get(previous).compareTo(current) > 0))
+            {
+                list.set(previous + 1, list.get(previous));
+                previous--;
+            }
+
+            list.set(previous + 1, current);
+        }
+        
+        for (int k = 0; k < list.size(); k++)
+        {
+            score = 0;
+            current = list.get(k);
+            
+            for (char letter : current.toCharArray())
+            {
+                if (Character.isUpperCase(letter))
+                {
+                    score += letter - ('A' - 1);
+                }
+            }
+            
+            score *= (k + 1);
+            sum += score;
+        }
+
+        return sum;
+    }
 }
