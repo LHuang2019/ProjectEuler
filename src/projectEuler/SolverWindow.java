@@ -2,7 +2,6 @@ package projectEuler;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -79,7 +78,7 @@ public class SolverWindow {
         ArrayList<String> output = new ArrayList<String>();
 
         String current = "";
-        
+
         while (scan.hasNextLine())
         {
             current = scan.nextLine();
@@ -100,8 +99,15 @@ public class SolverWindow {
     public static void main (String[]   arg) throws FileNotFoundException
     {
 
-        System.out.println(LevelOneToTwentyFive.nameScores(stringArrayReader("problem22.txt")));
+        System.out.println(LevelOneToTwentyFive.nonAbundantSums());
         //System.out.println(Arrays.deepToString(array));
 
+        /**
+        ArrayList<Integer> list = ProjectHelper.properFactorFinder(12);
+        for (int i = 0; i < list.size(); i++)
+        {
+            System.out.println(list.get(i));
+        }
+         **/
     }
 }

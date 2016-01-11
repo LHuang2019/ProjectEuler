@@ -117,7 +117,7 @@ public class ProjectHelper {
         else   
             return x;
     }
-    
+
     /**
      * Method which finds the name of the weekday of January 1st
      *      for any year after 1900
@@ -128,48 +128,63 @@ public class ProjectHelper {
     {
         int difference = year - 1900;
         int startDay = ((difference / 4) + difference) % 7;
-        
+
         if (difference > 99)
         {
             startDay -= difference / 100;
         }
-        
+
         if (year % 100 != 0 && year % 4 == 0)
         {
             startDay -= 1;
-            
+
             if (startDay < 0)
             {
                 startDay += 7;
             }
         }
-        
+
         return startDay;
     }
-    
+
     /**
      * Method which returns all the factors of the number except itself
      *      in an ArrayList
      * @param num the number
      * @return an ArrayList of all the factors of the number except itself
      */
-    public static ArrayList<Integer> factorFinder(int num)
+    public static ArrayList<Integer> properFactorFinder(int num)
     {
-        
-        long sqrtNum = Math.round(Math.sqrt(num)) + 1;
-        
+
+        int divisor = 0;
+        int increment = 1;
+        int start = 2;
+
         ArrayList<Integer> list = new ArrayList<Integer>();
         list.add(1);
-        
-        for (int i = 2; i <= sqrtNum; i++)
+
+        int sqrtNum = (int)Math.sqrt(num);
+
+        if (num % 2 != 0)
         {
-            if (num % i == 0)
+            increment = 2;
+            start = 3;
+        }
+
+        for(int i = start; i <= sqrtNum; i += increment)
+        {
+            if(num % i == 0)
             {
                 list.add(i);
-                list.add(num/i);
+                divisor = num / i;
+
+                if(divisor != i)
+                {
+                    list.add(divisor);
+                }
             }
         }
-        
+
         return list;
     }
 }

@@ -588,13 +588,13 @@ public class LevelOneToTwentyFive {
         for (int i = 1; i < array.length; i++)
         {
             if (!array[i]){
-                current = ProjectHelper.factorFinder(i);
+                current = ProjectHelper.properFactorFinder(i);
                 for (int j = 0; j < current.size(); j++)
                 {
                     amicable += current.get(j);
                 }
 
-                current = ProjectHelper.factorFinder(amicable);
+                current = ProjectHelper.properFactorFinder(amicable);
                 for (int k = 0; k < current.size(); k++)
                 {
                     amicableReverse += current.get(k);
@@ -637,12 +637,12 @@ public class LevelOneToTwentyFive {
 
             list.set(previous + 1, current);
         }
-        
+
         for (int k = 0; k < list.size(); k++)
         {
             score = 0;
             current = list.get(k);
-            
+
             for (char letter : current.toCharArray())
             {
                 if (Character.isUpperCase(letter))
@@ -650,11 +650,67 @@ public class LevelOneToTwentyFive {
                     score += letter - ('A' - 1);
                 }
             }
-            
+
             score *= (k + 1);
             sum += score;
         }
 
         return sum;
+    }
+
+    /**
+     * Method which solves problem 23 using loops and properties of
+     *      abundant numbers; used helper method properFactorFinder
+     *      to solved this problem
+     * @return sum sum of all positive integers which cannot 
+     *          be written as the sum of two abundant numbers.
+     */
+    public static int nonAbundantSums ()
+    {
+        int currentSum = 0;
+        int sum = 0;
+        boolean[] list = new boolean[28124];
+        ArrayList<Integer> isAbundant = new ArrayList<Integer>();
+        ArrayList<Integer> current = new ArrayList<Integer>();
+
+        for (int j = 1; j < 28124; j++)
+        {
+            current = ProjectHelper.properFactorFinder(j);
+            for (int k = 0; k < current.size(); k++)
+            {
+                currentSum += current.get(k);
+            }
+            if (currentSum > j)
+            {
+                isAbundant.add(j);
+            }
+            currentSum = 0;
+        }
+
+        for (int l = 0; l < isAbundant.size(); l++)
+        {
+            for (int m = l; m < isAbundant.size(); m++)
+            {
+                if ((isAbundant.get(l) + isAbundant.get(m)) <= 28123)
+                {
+                    list[isAbundant.get(l) + isAbundant.get(m)] = true;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
+        for (int n = 0; n < list.length; n++)
+        {
+            if (!list[n])
+            {
+                sum += n;
+            }
+        }
+
+        return sum;
+
     }
 }
