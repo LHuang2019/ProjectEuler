@@ -99,7 +99,7 @@ public class SolverWindow {
     public static void main (String[]   arg) throws FileNotFoundException
     {
 
-        System.out.println(LevelOneToTwentyFive.nonAbundantSums());
+        System.out.println(LevelOneToTwentyFive.thousandDigitFibNum(1000));
         //System.out.println(Arrays.deepToString(array));
 
         /**

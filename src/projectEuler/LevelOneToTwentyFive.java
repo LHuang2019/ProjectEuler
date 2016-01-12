@@ -665,7 +665,7 @@ public class LevelOneToTwentyFive {
      * @return sum sum of all positive integers which cannot 
      *          be written as the sum of two abundant numbers.
      */
-    public static int nonAbundantSums ()
+    public static int nonAbundantSums()
     {
         int currentSum = 0;
         int sum = 0;
@@ -712,5 +712,33 @@ public class LevelOneToTwentyFive {
 
         return sum;
 
+    }
+    
+    /**
+     * Method which solves problem 25 using loops and BigInteger
+     * @param digit the number of the digit that the question requires
+     * @return the index of fib number with required digit
+     */
+    public static int thousandDigitFibNum(int digit)
+    {
+        if (digit == 0)
+        {
+            return 0;
+        }
+        
+        String currentNum = "";
+        BigInteger previousFib = new BigInteger("1");
+        BigInteger currentFib = new BigInteger("1");
+        int term = 2;
+
+        while (currentNum.length() < digit)
+        {       
+            BigInteger newFib = previousFib.add(currentFib);
+            previousFib = new BigInteger(currentFib.toString());
+            currentFib = new BigInteger(newFib.toString());
+            currentNum = currentFib.toString();
+            term++;
+        }
+        return term;
     }
 }
