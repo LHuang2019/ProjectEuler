@@ -1,10 +1,9 @@
 package projectEuler;
-
 import java.math.BigInteger;
 import java.util.ArrayList;
 
 /**
- * The class which contains the method that solves problem one through twenty five
+ * The class which contain methods that solve problem one through twenty five
  * @author Li Huang
  * @version 12.21.2015
  */

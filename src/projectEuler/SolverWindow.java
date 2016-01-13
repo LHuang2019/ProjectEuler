@@ -99,7 +99,8 @@ public class SolverWindow {
     public static void main (String[]   arg) throws FileNotFoundException
     {
 
-        System.out.println(LevelOneToTwentyFive.thousandDigitFibNum(1000));
+        //System.out.println(LevelOneToTwentyFive.thousandDigitFibNum(1000));
+        System.out.println(LevelTwentySixToFifty.selfPowers(1000, 10000000000L));
         //System.out.println(Arrays.deepToString(array));
 
         /**
@@ -109,5 +110,7 @@ public class SolverWindow {
             System.out.println(list.get(i));
         }
          **/
+        
+        //System.out.println(Integer.toBinaryString(117));
     }
 }
