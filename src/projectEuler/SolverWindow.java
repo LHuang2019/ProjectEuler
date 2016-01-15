@@ -2,6 +2,7 @@ package projectEuler;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -99,8 +100,10 @@ public class SolverWindow {
     public static void main (String[]   arg) throws FileNotFoundException
     {
 
-        //System.out.println(LevelOneToTwentyFive.thousandDigitFibNum(1000));
-        System.out.println(LevelTwentySixToFifty.selfPowers(1000, 10000000000L));
+        int[] array = LevelOneToTwentyFive.lexicographicPermutations(10, 999999);
+        System.out.println(Arrays.toString(array));
+        
+        //System.out.println(LevelTwentySixToFifty.selfPowers(1000, 10000000000L));
         //System.out.println(Arrays.deepToString(array));
 
         /**
@@ -112,5 +115,6 @@ public class SolverWindow {
          **/
         
         //System.out.println(Integer.toBinaryString(117));
+
     }
 }

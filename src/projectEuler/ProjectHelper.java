@@ -187,4 +187,74 @@ public class ProjectHelper {
 
         return list;
     }
+
+    /**
+     * Method which returns the next Lexicographic permutations of an integer array
+     * @param array the integer array
+     * @return the array with next Lexicographic permutations; original array
+     *          if there is no next Lexicographic permutations
+     */
+    public static int[] nextLexicographicOrder (int[] array)
+    {
+        int key = 0;
+        int keyPosition = Integer.MIN_VALUE;
+        int keyNext = Integer.MAX_VALUE;
+        int keyNextPosition = 0;
+        
+        for (int i = 0; i < array.length - 1; i++)
+        {
+            if (array[i] < array[i + 1] && i > keyPosition)
+            {
+                key = array[i];
+                keyPosition = i;
+            }
+        }
+        
+        if (keyPosition == Integer.MIN_VALUE)
+        {
+            return array;
+        }
+        
+        for (int j = keyPosition + 1; j < array.length; j++)
+        {
+            if (array[j] < keyNext && array[j] > key)
+            {
+                keyNext = array[j];
+                keyNextPosition = j;
+            }
+        }
+        
+        array[keyPosition] = keyNext;
+        array[keyNextPosition] = key;
+        
+        array = arrayIntSort(array, keyPosition + 1);
+        
+        return array;
+    }
+
+    /**
+     * A simple method that uses insertion sort to sort an integer array
+     *      from the start index to the end
+     * @param array the given array
+     * @param start the start index
+     * @return the sorted array
+     */
+    public static int[] arrayIntSort(int[] array, int start)
+    {
+        int key = 0;
+        
+        for (int i = start; i < array.length; i++)
+        {
+            key = array[i];
+            int previous = i - 1;
+            while (previous > start - 1 && (array[previous] > key))
+            {
+                array[previous + 1] = array[previous];
+                previous--;
+            }
+            array[previous + 1] = key;
+        }
+        
+        return array;
+    }
 }

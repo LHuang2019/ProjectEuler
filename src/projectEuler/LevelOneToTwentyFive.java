@@ -740,4 +740,28 @@ public class LevelOneToTwentyFive {
         }
         return term;
     }
+    
+    /**
+     * Method which solves problem 24 using helper method, loops,
+     *      and the algorithm of generating lexicographic permutations
+     * @param digit the number given to the array
+     * @param term the lexicographic permutations term
+     * @return array with the given lexicographic permutations term
+     */
+    public static int[] lexicographicPermutations (int digit, int term)
+    {
+        int[] array = new int[digit];
+        
+        for (int i = 0; i < digit; i++)
+        {
+            array[i] = i;
+        }
+        
+        for (long j = 0; j < term; j++)
+        {
+            array = ProjectHelper.nextLexicographicOrder(array);
+        }
+        
+        return array;
+    }
 }
