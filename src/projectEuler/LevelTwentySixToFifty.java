@@ -32,4 +32,9 @@ public class LevelTwentySixToFifty {
         
         return output;
     }
+    
+    public static int numberSpiralDiagonals (int n)
+    {
+        return 0;
+    }
 }
