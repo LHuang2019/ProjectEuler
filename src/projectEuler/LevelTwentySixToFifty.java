@@ -44,10 +44,7 @@ public class LevelTwentySixToFifty {
         int current = 3;
         for (int i = 1; i <= (n - 1) / 2; i++)
         {
-            sum += (current * current);
-            sum += ((current * current) - (6 * i));
-            sum += ((current * current) - (2 * i));
-            sum += ((current * current) - (4 * i));
+            sum += 4 * (current * current) - 12 * i;
             current += 2;
         }
         
