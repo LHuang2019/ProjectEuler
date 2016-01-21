@@ -98,12 +98,8 @@ public class SolverWindow {
      * @throws FileNotFoundException 
      */
     public static void main (String[]   arg) throws FileNotFoundException
-    {
-
-        int[] array = LevelOneToTwentyFive.lexicographicPermutations(10, 999999);
-        System.out.println(Arrays.toString(array));
-        
-        //System.out.println(LevelTwentySixToFifty.selfPowers(1000, 10000000000L));
+    {   
+        System.out.println(LevelTwentySixToFifty.numberSpiralDiagonals(1001));
         //System.out.println(Arrays.deepToString(array));
 
         /**

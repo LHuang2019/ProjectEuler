@@ -33,8 +33,24 @@ public class LevelTwentySixToFifty {
         return output;
     }
     
+    /**
+     * Method which solves problem 28 using loops
+     * @param n the n spiral
+     * @return the sum of numbers on the diagonals in a n by n spiral
+     */
     public static int numberSpiralDiagonals (int n)
-    {
-        return 0;
+    {   
+        int sum = 1;
+        int current = 3;
+        for (int i = 1; i <= (n - 1) / 2; i++)
+        {
+            sum += (current * current);
+            sum += ((current * current) - (6 * i));
+            sum += ((current * current) - (2 * i));
+            sum += ((current * current) - (4 * i));
+            current += 2;
+        }
+        
+        return sum;
     }
 }
