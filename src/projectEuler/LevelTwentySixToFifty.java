@@ -20,19 +20,19 @@ public class LevelTwentySixToFifty {
         BigInteger current = new BigInteger("0");
         BigInteger mod = BigInteger.valueOf(digit);
         BigInteger sum = new BigInteger("0");
-        
+
         for (int i = 1; i < maxNum; i++)
         {
             current = BigInteger.valueOf(i);
             sum = sum.add(current.modPow(current, mod));
             sum = new BigInteger(sum.mod(mod).toString());
         }
-        
+
         String output = sum.toString();
-        
+
         return output;
     }
-    
+
     /**
      * Method which solves problem 28 using loops
      * @param n the n spiral
@@ -47,7 +47,42 @@ public class LevelTwentySixToFifty {
             sum += 4 * (current * current) - 12 * i;
             current += 2;
         }
-        
+
+        return sum;
+    }
+
+    /**
+     * Method which solves problem 30 using loops
+     * @param pow the power 
+     * @return sum of all numbers that can be written 
+     *         as the sum given powers of their digits
+     */
+    public static int digitFifthPowers (double pow)
+    {
+        long max = (long) (pow * Math.pow(9, pow));
+        int strLength = Long.toString(max).length();
+        max = (long) (strLength * Math.pow(9, pow));
+
+        int sum = 0;
+
+        for (int i = 2; i <= max; i++)
+        {
+            int sumOfPowers = 0;
+            int current = i;
+
+            while (current > 0) {
+                int currentDigit = current % 10;
+
+                currentDigit = (int) Math.pow(currentDigit, pow);
+                sumOfPowers += currentDigit;
+                current /= 10;
+            }
+
+            if (sumOfPowers == i) {
+                sum += i;
+            }
+        }
+
         return sum;
     }
 }
