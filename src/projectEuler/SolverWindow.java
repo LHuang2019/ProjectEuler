@@ -99,7 +99,7 @@ public class SolverWindow {
      */
     public static void main (String[]   arg) throws FileNotFoundException
     {   
-        System.out.println(LevelTwentySixToFifty.digitFifthPowers(5));
+        System.out.println(LevelTwentySixToFifty.distinctPowers(100));
         //System.out.println(Arrays.deepToString(array));
 
         /**
