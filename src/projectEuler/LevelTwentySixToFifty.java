@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author Li Huang
  * @version 12.21.2015
  */
-public class LevelTwentySixToFifty {
+public class LevelTwentySixToFifty extends ProjectHelper{
 
     /**
      * Method which solves problem 48 using BigInteger and loops
@@ -116,6 +116,38 @@ public class LevelTwentySixToFifty {
             }
 
             if (sumOfPowers == i) {
+                sum += i;
+            }
+        }
+
+        return sum;
+    }
+    
+    /**
+     * Method which solves problem 34 using similar approach as problem 30 
+     * @return sum of all numbers all numbers 
+     *          which are equal to the sum of the factorial of their digits
+     */
+    public static int digitFactorials ()
+    {
+        long max = 7 * factorialCalculator(9); //the upper bound
+        int currentFactorial = 0;
+        int sum = 0;
+        
+        for (int i = 3; i <= max; i++)
+        {
+            int current = i;
+            int numSum = 0;
+            
+            while (current > 0) {
+                int currentDigit = current % 10;
+
+                currentFactorial = (int)factorialCalculator(currentDigit);
+                numSum += currentFactorial;
+                current /= 10;
+            }
+
+            if (numSum == i) {
                 sum += i;
             }
         }

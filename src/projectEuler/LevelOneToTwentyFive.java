@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Li Huang
  * @version 12.21.2015
  */
-public class LevelOneToTwentyFive {
+public class LevelOneToTwentyFive extends ProjectHelper{
 
     /**
      * Method which solves problem one
@@ -73,7 +73,7 @@ public class LevelOneToTwentyFive {
      */
     public static long largestPrimeFactor(long input)
     {
-        ArrayList<Long> list = ProjectHelper.primeFactor(input);
+        ArrayList<Long> list = primeFactor(input);
         long output = list.get(list.size() - 1);
 
         return output;
@@ -93,7 +93,7 @@ public class LevelOneToTwentyFive {
         {
             for (int j = i; j > min; j--)
             {
-                if (ProjectHelper.palindromeIntChecker(i * j) && i * j > output)
+                if (palindromeIntChecker(i * j) && i * j > output)
                 {
                     output = i * j;
                 }
@@ -127,7 +127,7 @@ public class LevelOneToTwentyFive {
      */
     public static int problemSeven(int max)
     {
-        boolean[] list = ProjectHelper.sieveOfErathosthenes(109999);
+        boolean[] list = sieveOfErathosthenes(109999);
 
         int count = 0;
         int index = 2;
@@ -221,7 +221,7 @@ public class LevelOneToTwentyFive {
      */
     public static long summationOfPrimes(int max)
     {
-        boolean[] list = ProjectHelper.sieveOfErathosthenes(max);
+        boolean[] list = sieveOfErathosthenes(max);
         long sum = 0;
 
         for (int i = 2; i < list.length; i++)
@@ -255,7 +255,7 @@ public class LevelOneToTwentyFive {
                 checkerRight = input[i][j] * input[i][j + 1] * input[i][j + 2] * input[i][j + 3];
                 checkerDown = input[i][j] * input[i + 1][j] * input[i + 2][j] * input[i + 3][j];
                 checkerDiagonal = input[i][j] * input[i + 1][j + 1] * input[i + 2][j + 2] * input[i + 3][j + 3];
-                checker = ProjectHelper.largestOfThree(checkerRight, checkerDown, checkerDiagonal);
+                checker = largestOfThree(checkerRight, checkerDown, checkerDiagonal);
                 if (checker > largest)
                 {
                     largest = checker;
@@ -510,7 +510,7 @@ public class LevelOneToTwentyFive {
 
         for (int i = begin; i <= end; i++)
         {
-            weekDay = ProjectHelper.startDayFinder(i);
+            weekDay = startDayFinder(i);
 
             for (int month = 0; month < 12; month++)
             {
@@ -587,13 +587,13 @@ public class LevelOneToTwentyFive {
         for (int i = 1; i < array.length; i++)
         {
             if (!array[i]){
-                current = ProjectHelper.properFactorFinder(i);
+                current = properFactorFinder(i);
                 for (int j = 0; j < current.size(); j++)
                 {
                     amicable += current.get(j);
                 }
 
-                current = ProjectHelper.properFactorFinder(amicable);
+                current = properFactorFinder(amicable);
                 for (int k = 0; k < current.size(); k++)
                 {
                     amicableReverse += current.get(k);
@@ -674,7 +674,7 @@ public class LevelOneToTwentyFive {
 
         for (int j = 1; j < 28124; j++)
         {
-            current = ProjectHelper.properFactorFinder(j);
+            current = properFactorFinder(j);
             for (int k = 0; k < current.size(); k++)
             {
                 currentSum += current.get(k);
@@ -759,7 +759,7 @@ public class LevelOneToTwentyFive {
         
         for (long j = 0; j < term; j++)
         {
-            array = ProjectHelper.nextLexicographicOrder(array);
+            array = nextLexicographicOrder(array);
         }
         
         return array;

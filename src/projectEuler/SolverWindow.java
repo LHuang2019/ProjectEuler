@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author Li Huang
  * @version 12.21.2015
  */
-public class SolverWindow {
+public class SolverWindow extends ProjectHelper{
 
     /**
      * Method which reads in the file and convert it into 2d array of integer
@@ -103,7 +103,7 @@ public class SolverWindow {
         //System.out.println(Arrays.deepToString(array));
 
         /**
-        ArrayList<Integer> list = ProjectHelper.properFactorFinder(12);
+        ArrayList<Integer> list = properFactorFinder(12);
         for (int i = 0; i < list.size(); i++)
         {
             System.out.println(list.get(i));
@@ -111,6 +111,6 @@ public class SolverWindow {
          **/
         
         //System.out.println(Integer.toBinaryString(117));
-
+        System.out.println(LevelTwentySixToFifty.digitFactorials());
     }
 }

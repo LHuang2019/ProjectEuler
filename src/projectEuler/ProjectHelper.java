@@ -257,4 +257,21 @@ public class ProjectHelper {
         
         return array;
     }
+    
+    /**
+     * Helper method which calculates the factorial of the given number
+     * @param num the given number
+     * @return the factorial of the given number; num!
+     */
+    public static long factorialCalculator (int num)
+    {
+        long answer = 1;
+        
+        for (int i = 1; i <= num; i++)
+        {
+            answer *= i;
+        }
+        
+        return answer;
+    }
 }
