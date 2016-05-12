@@ -10,7 +10,7 @@ public class ProjectHelper {
 
     /**
      * helper method which checks to see if a number is palindrome
-     * @param input the number that be checked
+     * @param input the number that needs to be check
      * @return true if the number is palindrome
      */
     public static boolean palindromeIntChecker(int input)
@@ -26,6 +26,16 @@ public class ProjectHelper {
             num = num / 10;
         }    
         return rev == input;
+    }
+
+    /**
+     * helper method which checks to see if a string is palindrome
+     * @param input input the string that needs to be check
+     * @return true if the string is palindrome
+     */
+    public static boolean palindromeStringChecker(String input)
+    {
+        return input.equals(new StringBuilder(input).reverse().toString());
     }
 
     /**
@@ -200,7 +210,7 @@ public class ProjectHelper {
         int keyPosition = Integer.MIN_VALUE;
         int keyNext = Integer.MAX_VALUE;
         int keyNextPosition = 0;
-        
+
         for (int i = 0; i < array.length - 1; i++)
         {
             if (array[i] < array[i + 1] && i > keyPosition)
@@ -209,12 +219,12 @@ public class ProjectHelper {
                 keyPosition = i;
             }
         }
-        
+
         if (keyPosition == Integer.MIN_VALUE)
         {
             return array;
         }
-        
+
         for (int j = keyPosition + 1; j < array.length; j++)
         {
             if (array[j] < keyNext && array[j] > key)
@@ -223,12 +233,12 @@ public class ProjectHelper {
                 keyNextPosition = j;
             }
         }
-        
+
         array[keyPosition] = keyNext;
         array[keyNextPosition] = key;
-        
+
         array = arrayIntSort(array, keyPosition + 1);
-        
+
         return array;
     }
 
@@ -242,7 +252,7 @@ public class ProjectHelper {
     public static int[] arrayIntSort(int[] array, int start)
     {
         int key = 0;
-        
+
         for (int i = start; i < array.length; i++)
         {
             key = array[i];
@@ -254,10 +264,10 @@ public class ProjectHelper {
             }
             array[previous + 1] = key;
         }
-        
+
         return array;
     }
-    
+
     /**
      * Helper method which calculates the factorial of the given number
      * @param num the given number
@@ -266,12 +276,12 @@ public class ProjectHelper {
     public static long factorialCalculator (int num)
     {
         long answer = 1;
-        
+
         for (int i = 1; i <= num; i++)
         {
             answer *= i;
         }
-        
+
         return answer;
     }
 }

@@ -99,7 +99,7 @@ public class SolverWindow extends ProjectHelper{
      */
     public static void main (String[]   arg) throws FileNotFoundException
     {   
-        System.out.println(LevelTwentySixToFifty.distinctPowers(100));
+        //System.out.println(LevelTwentySixToFifty.distinctPowers(100));
         //System.out.println(Arrays.deepToString(array));
 
         /**
@@ -109,8 +109,9 @@ public class SolverWindow extends ProjectHelper{
             System.out.println(list.get(i));
         }
          **/
-        
+
         //System.out.println(Integer.toBinaryString(117));
-        System.out.println(LevelTwentySixToFifty.digitFactorials());
+        System.out.println(LevelTwentySixToFifty.doubleBasePalindromes(999999));
+
     }
 }

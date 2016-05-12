@@ -712,7 +712,7 @@ public class LevelOneToTwentyFive extends ProjectHelper{
         return sum;
 
     }
-    
+
     /**
      * Method which solves problem 25 using loops and BigInteger
      * @param digit the number of the digit that the question requires
@@ -724,7 +724,7 @@ public class LevelOneToTwentyFive extends ProjectHelper{
         {
             return 0;
         }
-        
+
         String currentNum = "";
         BigInteger previousFib = new BigInteger("1");
         BigInteger currentFib = new BigInteger("1");
@@ -740,7 +740,7 @@ public class LevelOneToTwentyFive extends ProjectHelper{
         }
         return term;
     }
-    
+
     /**
      * Method which solves problem 24 using helper method, loops,
      *      and the algorithm of generating lexicographic permutations
@@ -751,17 +751,17 @@ public class LevelOneToTwentyFive extends ProjectHelper{
     public static int[] lexicographicPermutations (int digit, int term)
     {
         int[] array = new int[digit];
-        
+
         for (int i = 0; i < digit; i++)
         {
             array[i] = i;
         }
-        
+
         for (long j = 0; j < term; j++)
         {
             array = nextLexicographicOrder(array);
         }
-        
+
         return array;
     }
 }

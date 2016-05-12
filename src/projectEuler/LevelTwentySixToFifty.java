@@ -154,4 +154,29 @@ public class LevelTwentySixToFifty extends ProjectHelper{
 
         return sum;
     }
+    
+    /**
+     * Method which solves problem 36 using brute force
+     * @param max the max number
+     * @return the sum of all number that is palindrome in base 2 and 10
+     */
+    public static int doubleBasePalindromes(int max)
+    {
+        String binary = "";
+        int sum = 0;
+        
+        for (int i = 1; i <= max; i += 2)
+        {
+            if (palindromeIntChecker(i))
+            {
+                 binary = Integer.toBinaryString(i);
+                 if (palindromeStringChecker(binary))
+                 {
+                     sum += i;
+                 }
+            }
+        }
+        
+        return sum;
+    }
 }
