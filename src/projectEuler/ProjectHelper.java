@@ -69,7 +69,8 @@ public class ProjectHelper {
 
     /**
      * Helper method which given a number, gives you all the prime numbers
-     *      under that number, using the algorithm of sieve half efficiently
+     *      less than that number, using the algorithm of sieve half efficiently
+     *      *** the given array should start with index at 2, since 1 is not a prime number ***
      * @param max the max value
      * @return list an array which gives you prime numbers with boolean false
      */

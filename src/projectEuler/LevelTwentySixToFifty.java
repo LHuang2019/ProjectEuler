@@ -156,6 +156,68 @@ public class LevelTwentySixToFifty extends ProjectHelper{
     }
     
     /**
+     * Method which solves problem 35 using loops and helper method sieveOfErathosthenes()
+     *      *** extremely inefficient ***
+     * @param max the max number 
+     * @return number of  circular primes are there below max
+     */
+    public static int circularPrimes (int max)
+    {
+        boolean[] primeArray = sieveOfErathosthenes(max);
+        boolean[] circularPrimes = new boolean[primeArray.length];
+        String currentPrime = "";
+        boolean currentCondition = true;
+        int count = 0;
+        int currentLength = 0;
+        int sum = 1;
+        
+        for (int i = 3; i < primeArray.length; i += 2) //start at 3 to make the loop more efficient
+        {
+            if (!primeArray[i])
+            {
+                currentPrime = Integer.toString(i);
+                currentLength = currentPrime.length();
+                count = 0;
+                currentCondition = true;
+                
+                while (currentCondition && count < currentLength)
+                {
+                    if (!primeArray[Integer.parseInt(currentPrime)])
+                    {
+                        currentPrime = currentPrime.substring(1) + currentPrime.substring(0, 1);
+                        count++;
+                    }
+                    else
+                    {
+                        currentCondition = false;
+                    }
+                }
+                
+                currentPrime = Integer.toString(i);
+                count = 0;
+                
+                while (currentCondition && count < currentLength)
+                {
+                    circularPrimes[Integer.parseInt(currentPrime)] = true;
+                    primeArray[Integer.parseInt(currentPrime)] = true;
+                    currentPrime = currentPrime.substring(1) + currentPrime.substring(0, 1);
+                    count++;
+                }
+            }
+        }
+        
+        for (int j = 3; j < circularPrimes.length; j += 2) //start at 3 to make the loop more efficient
+        {
+            if(circularPrimes[j])
+            {
+                sum++;
+            }
+        }
+        
+        return sum; //count 2 as prime number
+    }
+    
+    /**
      * Method which solves problem 36 using brute force
      * @param max the max number
      * @return the sum of all number that is palindrome in base 2 and 10

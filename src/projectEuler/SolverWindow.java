@@ -2,7 +2,6 @@ package projectEuler;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -111,7 +110,7 @@ public class SolverWindow extends ProjectHelper{
          **/
 
         //System.out.println(Integer.toBinaryString(117));
-        System.out.println(LevelTwentySixToFifty.doubleBasePalindromes(999999));
+        System.out.println(LevelTwentySixToFifty.circularPrimes(1000000));
 
     }
 }
