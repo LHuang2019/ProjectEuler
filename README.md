@@ -1,2 +1,2 @@
 # ProjectEuler
-Series of programs to solves problems given by Project Euler
+Series of methods that solve problems from Project Euler
