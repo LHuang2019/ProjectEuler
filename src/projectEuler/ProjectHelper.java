@@ -88,7 +88,11 @@ public class ProjectHelper {
                 }
             }
         }
-
+        
+        // both 0 and 1 is not prime;
+        list[0] = true;
+        list[1] = true;
+        
         return list;
     }
 
@@ -272,7 +276,7 @@ public class ProjectHelper {
     /**
      * Helper method which calculates the factorial of the given number
      * @param num the given number
-     * @return the factorial of the given number; num!
+     * @return the factorial of the given number num
      */
     public static long factorialCalculator (int num)
     {
@@ -284,5 +288,27 @@ public class ProjectHelper {
         }
 
         return answer;
+    }
+    
+    /**
+     * A simple method which tests if a number is a prime or not
+     * @param num the given number
+     * @return true if is prime, false if not
+     */
+    public static boolean isPrime (int num)
+    {
+        int value = Math.abs(num); // to check for negative number
+        
+        if (value < 2) return false;
+        if (value == 2) return true;
+                
+        // check up to square root of the number;
+        for (int i = 3; i < Math.sqrt(value); i++)
+        {
+            if (num % i == 0)
+                return false;
+        }
+        
+        return true;
     }
 }

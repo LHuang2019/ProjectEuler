@@ -35,6 +35,56 @@ public class LevelTwentySixToFifty extends ProjectHelper{
     }
 
     /**
+     * Method which solves problem 27 using helper method isPrime and sieveOfErathosthenes
+     * @param aMax max value a in n^2 + an + b
+     * @param bMax max value b in n^2 + an + b
+     * @return the product of a and b that generates largest number of primes with consecutive n 
+     */
+    public static int quadraticPrimes (int aMax, int bMax)
+    {
+        int a = 0, b = 0, n = 0, numOfPrime = -1, maxNumPrime = -1, currentPrime = 0;
+        boolean[] primeList = ProjectHelper.sieveOfErathosthenes(aMax);
+
+        // make aMax and bMax to be odd, so for loops can increment by 2 to increase speed
+        if (aMax != 2 && aMax % 2 == 0)
+            aMax--;
+        if (bMax != 2 && bMax % 2 == 0)
+            bMax--;
+
+        // a and b can only be prime for n^ + an + b to generate primes with consecutive n
+        for (int i = -aMax; i <= aMax; i += 2)
+        {
+            if (!primeList[Math.abs(i)])
+            {
+                for (int j = -bMax; j <= bMax; j += 2)
+                {
+                    if (!primeList[Math.abs(j)])
+                    {
+                        do
+                        {
+                            currentPrime = n * n + i * n + j;
+                            numOfPrime++;
+                            n++;
+                        } while (ProjectHelper.isPrime(currentPrime));
+
+                        if (numOfPrime > maxNumPrime)
+                        {
+                            maxNumPrime = numOfPrime;
+                            a = i;
+                            b = j;
+                        }
+                        numOfPrime = -1;
+                        n = 0;
+                        currentPrime = 0;
+                    }
+                }
+            }
+        }
+
+        return a * b;
+    }
+
+    /**
      * Method which solves problem 28 using loops
      * @param n the n spiral
      * @return the sum of numbers on the diagonals in a n by n spiral
@@ -122,7 +172,7 @@ public class LevelTwentySixToFifty extends ProjectHelper{
 
         return sum;
     }
-    
+
     /**
      * Method which solves problem 34 using similar approach as problem 30 
      * @return sum of all numbers all numbers 
@@ -133,12 +183,12 @@ public class LevelTwentySixToFifty extends ProjectHelper{
         long max = 7 * factorialCalculator(9); //the upper bound
         int currentFactorial = 0;
         int sum = 0;
-        
+
         for (int i = 3; i <= max; i++)
         {
             int current = i;
             int numSum = 0;
-            
+
             while (current > 0) {
                 int currentDigit = current % 10;
 
@@ -154,7 +204,7 @@ public class LevelTwentySixToFifty extends ProjectHelper{
 
         return sum;
     }
-    
+
     /**
      * Method which solves problem 35 using loops and helper method sieveOfErathosthenes()
      *      *** extremely inefficient ***
@@ -170,7 +220,7 @@ public class LevelTwentySixToFifty extends ProjectHelper{
         int count = 0;
         int currentLength = 0;
         int sum = 1;
-        
+
         for (int i = 3; i < primeArray.length; i += 2) //start at 3 to make the loop more efficient
         {
             if (!primeArray[i])
@@ -179,7 +229,7 @@ public class LevelTwentySixToFifty extends ProjectHelper{
                 currentLength = currentPrime.length();
                 count = 0;
                 currentCondition = true;
-                
+
                 while (currentCondition && count < currentLength)
                 {
                     if (!primeArray[Integer.parseInt(currentPrime)])
@@ -192,10 +242,10 @@ public class LevelTwentySixToFifty extends ProjectHelper{
                         currentCondition = false;
                     }
                 }
-                
+
                 currentPrime = Integer.toString(i);
                 count = 0;
-                
+
                 while (currentCondition && count < currentLength)
                 {
                     circularPrimes[Integer.parseInt(currentPrime)] = true;
@@ -205,7 +255,7 @@ public class LevelTwentySixToFifty extends ProjectHelper{
                 }
             }
         }
-        
+
         for (int j = 3; j < circularPrimes.length; j += 2) //start at 3 to make the loop more efficient
         {
             if(circularPrimes[j])
@@ -213,10 +263,10 @@ public class LevelTwentySixToFifty extends ProjectHelper{
                 sum++;
             }
         }
-        
+
         return sum; //count 2 as prime number
     }
-    
+
     /**
      * Method which solves problem 36 using brute force
      * @param max the max number
@@ -226,19 +276,19 @@ public class LevelTwentySixToFifty extends ProjectHelper{
     {
         String binary = "";
         int sum = 0;
-        
+
         for (int i = 1; i <= max; i += 2)
         {
             if (palindromeIntChecker(i))
             {
-                 binary = Integer.toBinaryString(i);
-                 if (palindromeStringChecker(binary))
-                 {
-                     sum += i;
-                 }
+                binary = Integer.toBinaryString(i);
+                if (palindromeStringChecker(binary))
+                {
+                    sum += i;
+                }
             }
         }
-        
+
         return sum;
     }
 }
