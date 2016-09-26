@@ -1,6 +1,8 @@
 package projectEuler;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 /**
@@ -11,27 +13,77 @@ import java.util.ArrayList;
 public class LevelTwentySixToFifty extends ProjectHelper{
 
     /**
-     * Method which solves problem 48 using BigInteger and loops
-     * @param maxNum the maximum number and its exponent
-     * @param digit the amount digit of the sum that wants to output
-     * @return the last giving input digit of the sum
+     * Method which solves problem 26 by comparing the remainders, uses helper method sieveOfErathosthenes
+     * @param max value in which we going to find unit fractions on
+     * @return the value which has largest reciprocal that is lower than max
      */
-    public static String selfPowers(int maxNum, long digit)
+    public static int reciprocalCycles (int max)
     {
-        BigInteger current = new BigInteger("0");
-        BigInteger mod = BigInteger.valueOf(digit);
-        BigInteger sum = new BigInteger("0");
+        ArrayList<Integer> remainderList = new ArrayList<Integer>();
+        remainderList.add(Integer.MAX_VALUE);
+        int currentRemainder = 1;
+        int current = 0;
+        int currentD = 0;
+        int currentMax = 0;
+        boolean condition = false;
+        boolean[] primeList = ProjectHelper.sieveOfErathosthenes(max);
 
-        for (int i = 1; i < maxNum; i++)
+        // if max is even then we need to make it odd to speed up the process
+        if (max != 2 && max % 2 == 0)
+            max -= 1;
+
+        // starts at max, only check the prime numbers because only prime generates
+        // reciprocal that is large enough
+        for (int i = max; i > 0; i -= 2)
         {
-            current = BigInteger.valueOf(i);
-            sum = sum.add(current.modPow(current, mod));
-            sum = new BigInteger(sum.mod(mod).toString());
+            if (primeList[i])
+                condition = true;
+
+            while(!condition)
+            {
+                while (currentRemainder < i)
+                    currentRemainder *= 10;
+
+                currentRemainder %= i;
+
+                if (currentRemainder != 0)
+                {
+                    for (int j = 0; j < remainderList.size(); j++)
+                    {
+                        if (remainderList.get(j) == currentRemainder)
+                        {
+                            j = remainderList.size();
+                            condition = true;
+                        }
+                    }
+                    if (condition)
+                    {
+                        if (current > currentMax)
+                        {
+                            currentD = i;
+                            currentMax = current;
+                        }
+                        currentRemainder = 1;
+                        current = 0;
+                        remainderList.clear();
+                        remainderList.add(Integer.MAX_VALUE);
+                    }
+                    else
+                    {
+                        remainderList.add(currentRemainder);
+                        current++;
+                    }
+                }
+                else
+                {
+                    currentRemainder = 1;
+                    condition = true;
+                }
+            }            
+            condition = false;
         }
 
-        String output = sum.toString();
-
-        return output;
+        return currentD;
     }
 
     /**
@@ -290,5 +342,29 @@ public class LevelTwentySixToFifty extends ProjectHelper{
         }
 
         return sum;
+    }
+
+    /**
+     * Method which solves problem 48 using BigInteger and loops
+     * @param maxNum the maximum number and its exponent
+     * @param digit the amount digit of the sum that wants to output
+     * @return the last giving input digit of the sum
+     */
+    public static String selfPowers(int maxNum, long digit)
+    {
+        BigInteger current = new BigInteger("0");
+        BigInteger mod = BigInteger.valueOf(digit);
+        BigInteger sum = new BigInteger("0");
+
+        for (int i = 1; i < maxNum; i++)
+        {
+            current = BigInteger.valueOf(i);
+            sum = sum.add(current.modPow(current, mod));
+            sum = new BigInteger(sum.mod(mod).toString());
+        }
+
+        String output = sum.toString();
+
+        return output;
     }
 }
