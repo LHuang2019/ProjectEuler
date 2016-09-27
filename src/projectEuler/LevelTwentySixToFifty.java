@@ -364,6 +364,11 @@ public class LevelTwentySixToFifty extends ProjectHelper{
 
         return sum;
     }
+    
+    public static int champernownesConstant (int maxDigit)
+    {        
+        return 0;
+    }
 
     /**
      * Method which solves problem 48 using BigInteger and loops
