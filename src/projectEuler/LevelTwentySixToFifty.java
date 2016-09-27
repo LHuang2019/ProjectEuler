@@ -224,6 +224,11 @@ public class LevelTwentySixToFifty extends ProjectHelper{
 
         return sum;
     }
+    
+    public static int coinSum(int currency)
+    {
+        return 0;
+    }
 
     /**
      * Method which solves problem 34 using similar approach as problem 30 
