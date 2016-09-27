@@ -110,7 +110,7 @@ public class SolverWindow extends ProjectHelper{
          **/
 
         //System.out.println(Integer.toBinaryString(117));
-        System.out.println(LevelTwentySixToFifty.reciprocalCycles(1000));
+        System.out.println(LevelTwentySixToFifty.coinSum(200));
 
     }
 }

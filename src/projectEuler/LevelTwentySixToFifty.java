@@ -224,10 +224,26 @@ public class LevelTwentySixToFifty extends ProjectHelper{
 
         return sum;
     }
-    
+
+    /**
+     * method which solves problem 31 using for loops and brute force
+     * @param currency the given amount of money
+     * @return the way we can use all the coins to add up to the amount of given money
+     */
     public static int coinSum(int currency)
     {
-        return 0;
+        int generation = 0;
+
+        for (int a = 0; a <= currency; a += 200)
+            for (int i = a; i <= currency; i += 100)
+                for (int j = i; j <= currency; j += 50)
+                    for (int k = j; k <= currency; k += 20)
+                        for (int m = k; m <= currency; m += 10)
+                            for (int n = m; n <= currency; n += 5)
+                                for (int x = n; x <= currency; x += 2)
+                                    generation++;
+
+        return generation;
     }
 
     /**
