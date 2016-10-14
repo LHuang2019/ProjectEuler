@@ -92,6 +92,39 @@ public class SolverWindow extends ProjectHelper{
     }
 
     /**
+     * Method specifically used for problem 42, which reads each word, 
+     * translate its letter to numbers in order of alphabet, and add the numbers to sum and store to array
+     * example: "ABC" -> "1 + 2 + 3" -> "6"
+     * @param fileName the file that will be reading i
+     * @return the array list of integer
+     * @throws FileNotFoundException
+     */
+    @SuppressWarnings("resource")
+    public static ArrayList<Integer> wordToNumArrayReader(String fileName) throws FileNotFoundException
+    {
+        
+        Scanner scan = new Scanner(new File(fileName));
+        ArrayList<Integer> output = new ArrayList<Integer>();
+        
+        int currentNum = 0;
+        
+        while (scan.hasNextLine())
+            for (String s : scan.nextLine().split(","))
+            {
+                s = s.toLowerCase();
+                s = s.replace("\"", "");
+                
+                for (int i = 0; i < s.length(); i++)
+                    currentNum += s.charAt(i) - 'a' + 1;
+                
+                output.add(currentNum);
+                currentNum = 0;
+            }
+
+        return output;  
+    }
+    
+    /**
      * The main method that gives the answer by calling other methods
      * @param arg the input argument
      * @throws FileNotFoundException 
@@ -111,6 +144,8 @@ public class SolverWindow extends ProjectHelper{
 
         //System.out.println(Integer.toBinaryString(117));
         System.out.println(LevelTwentySixToFifty.coinSum(200));
-
+        
+        ArrayList<Integer> list = wordToNumArrayReader("problem42.txt");
+        System.out.println(list.toString());
     }
 }
