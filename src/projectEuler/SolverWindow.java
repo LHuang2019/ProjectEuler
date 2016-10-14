@@ -146,6 +146,6 @@ public class SolverWindow extends ProjectHelper{
         System.out.println(LevelTwentySixToFifty.coinSum(200));
         
         ArrayList<Integer> list = wordToNumArrayReader("problem42.txt");
-        System.out.println(list.toString());
+        System.out.println(LevelTwentySixToFifty.codedTriangleNumbers(list));
     }
 }

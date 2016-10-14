@@ -369,7 +369,26 @@ public class LevelTwentySixToFifty extends ProjectHelper{
     {        
         return 0;
     }
-
+    
+    /**
+     * Method which solves problem 42 using wordToNumArrayReader and the idea that
+     * for x to be a triangle number, ((8x + 1)^(1/2) - 1) / 2 must return a whole number
+     * @param list of numbers that was translated by words
+     * @return amount of triangle numbers inside the list
+     */
+    public static int codedTriangleNumbers(ArrayList<Integer> list)
+    {
+        double currentNum = 0;
+        int count = 0;
+        for (int i = 0; i < list.size(); i++)
+        {
+            currentNum = (Math.pow(list.get(i) * 8 + 1, 0.5) - 1) / 2;
+            if (currentNum == Math.floor(currentNum) || currentNum == Math.ceil(currentNum))
+                    count ++;
+        }
+        
+        return count;
+    }
     /**
      * Method which solves problem 48 using BigInteger and loops
      * @param maxNum the maximum number and its exponent
