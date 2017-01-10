@@ -299,15 +299,13 @@ public class ProjectHelper {
     {
         int value = Math.abs(num); // to check for negative number
         
-        if (value < 2) return false;
         if (value == 2) return true;
-                
+        if (value < 2 || value % 2 == 0) return false;
+        
         // check up to square root of the number;
-        for (int i = 3; i < Math.sqrt(value); i++)
-        {
+        for (int i = 3; i < Math.sqrt(value); i += 2)
             if (num % i == 0)
                 return false;
-        }
         
         return true;
     }
